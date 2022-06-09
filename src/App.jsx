@@ -1,11 +1,15 @@
+import Navbar from "./components/Navbar";
+
+
 
 function App() {
 
-
-
   return (
-    <div >
-
+    <div className="m-5">
+      {/* importo mi componente */}
+      <Navbar
+      // 
+      />
     </div>
   );
 }
