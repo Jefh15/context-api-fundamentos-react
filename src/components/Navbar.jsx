@@ -1,24 +1,31 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+
+
+// importo mi themeContext
+import { ThemeContext } from '../context/ThemeProvider'
+
+
+
 
 const Navbar = () => {
 
 
-    // hago mi estado para poder cambiar el color de mi navbar
-    const [colorFondo, setColorFondo] = useState('')
-    // hago mi estado para poder cambiar el color de texto de mi navbar
-    // tenga color negro por defeecto
-    const [colorTexto, setColorTexto] = useState('#000')
-
-
+    // llamo los valores de mi contexto
+    const { theme, setTheme } = useContext(ThemeContext)
 
     return (
         <div
-            style={{
+            style={
+                {
 
-                // cambio el color de fondo de mi navbar
-                background: colorFondo,
-                color: colorTexto
-            }}>
+                    // cambio el color de fondo de mi navbar
+                    background: theme.background,
+                    // cambio el color de texto de mi navbar
+                    color: theme.color
+                }
+            }>
+
+
             <h1>Navbar</h1>
             <br />
             {/* Creo mi boton */}
@@ -33,7 +40,15 @@ const Navbar = () => {
                     // para ver el color seleccionado
                     // onChange={(e) => console.log(e.target.value)}
                     // le asigno el color de fondo
-                    onChange={(e) => setColorFondo(e.target.value)}
+                    onChange={(e) => setTheme(
+                        // vamos a tomar lo que viene de mi context
+                        {
+                            // haga una copia del state original que trae color y background de mi context
+                            ...theme,
+                            // le pongo mi color de fondo
+                            background: e.target.value
+                        }
+                    )}
                 />
             </div>
             <br />
@@ -41,7 +56,7 @@ const Navbar = () => {
             {/* Creo mi boton */}
             <div className="input-group mb-3">
                 <div className="input-group-prepend">
-                    <span className="input-group-text" id="basic-addon3">Seleccione el color de fuente</span>
+                    <span className="input-group-text" id="basic-addon3">Seleccione el color de texto</span>
                 </div>
                 {/* <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3"> */}
                 <input
@@ -50,7 +65,15 @@ const Navbar = () => {
                     // para ver el color seleccionado
                     // onChange={(e) => console.log(e.target.value)}
                     // le asigno el color de texto
-                    onChange={(e) => setColorTexto(e.target.value)}
+                    onChange={(e) => setTheme(
+                        // vamos a tomar lo que viene de mi context
+                        {
+                            // haga una copia del state original que trae color y background de mi context
+                            ...theme,
+                            // le pongo mi color de texto
+                            color: e.target.value
+                        }
+                    )}
                 />
             </div>
         </div>

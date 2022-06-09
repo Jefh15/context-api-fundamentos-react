@@ -1,16 +1,23 @@
 import Navbar from "./components/Navbar";
 
 
+// importo mi provider
+import ThemeProvider from "./context/ThemeProvider";
+
+
 
 function App() {
 
   return (
-    <div className="m-5">
+
+
+    <ThemeProvider>
       {/* importo mi componente */}
       <Navbar
-      // 
+      // le paso mis propiedades
+
       />
-    </div>
+    </ThemeProvider>
   );
 }
 
