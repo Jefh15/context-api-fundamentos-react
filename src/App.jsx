@@ -1,5 +1,7 @@
 // importo mi provider
 import ThemeProvider from "./context/ThemeProvider";
+import HolaProvider from "./context/HolaProvider";
+
 
 // importo mis componentes
 import Navbar from "./components/Navbar";
@@ -10,12 +12,19 @@ function App() {
 
   return (
 
-
+    // le paso mi context o provider
     <ThemeProvider>
-      {/* importo mi componente */}
-      <Navbar />
-      {/* importo mi componente */}
-      <Principal />
+
+      {/* // le paso mi context o provider */}
+      <HolaProvider>
+
+        {/* importo mi componente */}
+        <Navbar />
+        {/* importo mi componente */}
+        <Principal />
+
+
+      </HolaProvider>
     </ThemeProvider>
   );
 }

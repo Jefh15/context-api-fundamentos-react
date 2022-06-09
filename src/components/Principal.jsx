@@ -2,6 +2,11 @@ import React, { useContext } from 'react'
 
 // importo mi themeContext
 import { ThemeContext } from '../context/ThemeProvider'
+// importo mi HolaContext
+import { HolaContext } from '../context/HolaProvider'
+
+
+
 
 
 const Principal = () => {
@@ -9,6 +14,10 @@ const Principal = () => {
     // para poder usar el context
     // useContext(ThemeContext) ---> le paso el context
     const { theme } = useContext(ThemeContext)
+
+    // para poder usar el context
+    // useContext(ThemeContext) ---> le paso el context
+    const { hola } = useContext(HolaContext)
 
 
     return (
@@ -25,6 +34,7 @@ const Principal = () => {
             }
         >
             <h1>Contenido de mi sitio web</h1>
+            <p>{hola}</p>
         </div >
     )
 }
