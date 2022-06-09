@@ -1,9 +1,9 @@
-import Navbar from "./components/Navbar";
-
-
 // importo mi provider
 import ThemeProvider from "./context/ThemeProvider";
 
+// importo mis componentes
+import Navbar from "./components/Navbar";
+import Principal from "./components/Principal";
 
 
 function App() {
@@ -13,10 +13,9 @@ function App() {
 
     <ThemeProvider>
       {/* importo mi componente */}
-      <Navbar
-      // le paso mis propiedades
-
-      />
+      <Navbar />
+      {/* importo mi componente */}
+      <Principal />
     </ThemeProvider>
   );
 }

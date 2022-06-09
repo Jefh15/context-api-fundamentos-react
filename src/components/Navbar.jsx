@@ -11,7 +11,7 @@ const Navbar = () => {
 
 
     // llamo los valores de mi contexto
-    const { theme, setTheme } = useContext(ThemeContext)
+    const { theme, cambioColor } = useContext(ThemeContext)
 
     return (
         <div
@@ -40,7 +40,7 @@ const Navbar = () => {
                     // para ver el color seleccionado
                     // onChange={(e) => console.log(e.target.value)}
                     // le asigno el color de fondo
-                    onChange={(e) => setTheme(
+                    onChange={(e) => cambioColor(
                         // vamos a tomar lo que viene de mi context
                         {
                             // haga una copia del state original que trae color y background de mi context
@@ -65,7 +65,7 @@ const Navbar = () => {
                     // para ver el color seleccionado
                     // onChange={(e) => console.log(e.target.value)}
                     // le asigno el color de texto
-                    onChange={(e) => setTheme(
+                    onChange={(e) => cambioColor(
                         // vamos a tomar lo que viene de mi context
                         {
                             // haga una copia del state original que trae color y background de mi context

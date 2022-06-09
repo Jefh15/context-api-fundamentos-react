@@ -1,5 +1,5 @@
 // rafce
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // context utiliza una constante 
 // para poder crear el contexto
@@ -24,6 +24,44 @@ const ThemeProvider = (props) => {
     // creo este estado para hacer mi tema
     const [theme, setTheme] = useState(themes)
 
+
+    // para que cada vez que se abra de nuevo el navegador se necesita que traiga los cambios de mi theme
+    // para ello leemos el 'themeLocal' de mi localStorage para setear el tema como habia quedado
+    useEffect(() => {
+
+        // le decimos que si existe 'themeLocal'
+        if (localStorage.getItem('themeLocal')) {
+
+            // nosotros sacamos en una constante el thema local
+            // JSON.parse() ---> creamos el objeto
+            const themeLocal = JSON.parse(localStorage.getItem('themeLocal'))
+
+            // guardamos el thema en setTheme, para que
+            setTheme(themeLocal)
+        }
+
+
+        // para que se solo se ejecute una sola vez
+    }, [])
+
+
+
+
+
+    // creo una funcion que me cambie los valores del color
+    const cambioColor = (valor) => {
+        // cambiamos el valor
+        setTheme(valor)
+
+        // localStorage.setItem() --> ya podemos guardar el valor en el localStorage
+        // 'themeLocal' ---> mi key en el localStorage
+        // JSON.stringify() ---> le pasamos objeto
+        localStorage.setItem('themeLocal', JSON.stringify(valor))
+    }
+
+
+
+
     return (
 
         // DEBEMOS USAR NUESTRA VARIABLE ThemeContext ---> y pasarle la propiedad que es un provider
@@ -32,7 +70,7 @@ const ThemeProvider = (props) => {
             value={{
                 // le paso el estado que contiene mi tema
                 theme,
-                setTheme
+                cambioColor
             }}
         >
             {/* pasamos los children ---> porque vamos a 
